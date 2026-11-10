@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Acesse seu guia · Como Fazer Ele Voltar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  #leitor{display:none}
+  #paginas canvas{display:block;width:100%;height:auto;border-radius:10px;margin:0 auto 14px;box-shadow:0 10px 30px -12px rgba(0,0,0,.6);background:#fff}
+  .topo{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:18px}
+  .sair{background:none;border:1px solid var(--line);color:var(--mute);border-radius:10px;padding:8px 12px;font:500 13px 'Inter',sans-serif;cursor:pointer}
+  .wrap.largo{max-width:860px}
+  #paginas{-webkit-user-select:none;user-select:none}
+</style>
+</head>
+<body>
+<main class="wrap" id="main">
+
+  <section id="entrada">
+    <div class="center">
+      <span class="kicker">💗 Área da aluna</span>
+      <h1>Como Fazer Ele Voltar <em>em 10 Passos</em></h1>
+      <p class="mt16">Digite a senha que você recebeu no seu e-mail logo depois da compra.</p>
+    </div>
+    <form id="f" class="card mt24" novalidate>
+      <label for="senha">Sua senha de acesso</label>
+      <input id="senha" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Ex.: K7M2XQ9P" style="text-transform:uppercase;letter-spacing:3px;font-weight:600">
+      <div class="err" id="err"></div>
+      <button class="btn mt16" id="entrar" type="submit">Abrir meu guia →</button>
+    </form>
+    <p class="fine">Não achou o e-mail com a senha? Confira as pastas de <b>spam</b> e <b>promoções</b>.<br>Ainda com dúvida? Fale com a gente no <a id="wpp" target="_blank" rel="noopener">WhatsApp</a>.</p>
+  </section>
+
+  <section id="leitor">
+    <div class="topo">
+      <h3>Como Fazer Ele Voltar <span class="gold">em 10 Passos</span></h3>
+      <button class="sair" id="sair">Sair</button>
+    </div>
+    <p class="center" id="carregando">Abrindo seu guia…</p>
+    <div id="paginas"></div>
+  </section>
+
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+  const FUNC = 'https://wwqsbhmaegedjwsrcmth.supabase.co/functions/v1/validar-senha';
+  const PRODUTO = 'ele-voltar';
+  const CHAVE = 'guia-ele-voltar-senha';
+  const WHATSAPP = '5531995618248';
+  document.getElementById('wpp').href = 'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent('Oi! Comprei o guia Como Fazer Ele Voltar e preciso de ajuda com o acesso.');
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+  const $ = id => document.getElementById(id);
+  const guarda = v => { try { v ? localStorage.setItem(CHAVE, v) : localStorage.removeItem(CHAVE); } catch (e) {} };
+  const lida = () => { try { return localStorage.getItem(CHAVE); } catch (e) { return null; } };
+
+  async function abrir(senha, automatico) {
+    $('err').textContent = ''; $('entrar').disabled = true; $('entrar').textContent = 'Conferindo…';
+    try {
+      const r = await fetch(FUNC, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ senha, produto: PRODUTO }) });
+      const d = await r.json();
+      if (!d.ok) { guarda(null); if (!automatico) $('err').textContent = 'Senha não encontrada. Confira se digitou igual ao e-mail (só letras maiúsculas e números).'; return; }
+      guarda(senha);
+      $('entrada').style.display = 'none'; $('leitor').style.display = 'block'; $('main').classList.add('largo');
+      await mostrar(d.url);
+    } catch (e) {
+      $('err').textContent = 'Não foi possível conectar. Verifique sua internet e tente de novo.';
+    } finally {
+      $('entrar').disabled = false; $('entrar').textContent = 'Abrir meu guia →';
+    }
+  }
+
+  async function mostrar(url) {
+    const pdf = await pdfjsLib.getDocument(url).promise;
+    const box = $('paginas'); box.innerHTML = '';
+    const largura = Math.min(box.clientWidth || 800, 820);
+    for (let i = 1; i <= pdf.numPages; i++) {
+      const pg = await pdf.getPage(i);
+      const base = pg.getViewport({ scale: 1 });
+      const escala = (largura / base.width) * (window.devicePixelRatio || 1);
+      const vp = pg.getViewport({ scale: escala });
+      const c = document.createElement('canvas'); c.width = vp.width; c.height = vp.height;
+      box.appendChild(c);
+      await pg.render({ canvasContext: c.getContext('2d'), viewport: vp }).promise;
+      if (i === 1) $('carregando').style.display = 'none';
+    }
+  }
+
+  $('f').onsubmit = e => { e.preventDefault(); const s = $('senha').value.trim().toUpperCase(); if (s.length < 6) { $('err').textContent = 'Digite a senha completa.'; return; } abrir(s, false); };
+  $('sair').onclick = () => { guarda(null); location.reload(); };
+  document.addEventListener('contextmenu', e => { if (e.target.tagName === 'CANVAS') e.preventDefault(); });
+  const salva = lida(); if (salva) abrir(salva, true);
+</script>
+</body>
+</html>
