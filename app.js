@@ -3,7 +3,7 @@
    ============================================================ */
 window.CONFIG = {
   // 1) Link do checkout Kiwify do produto de R$ 9,90 (ex.: https://pay.kiwify.com.br/XXXXXXX)
-  CHECKOUT_URL: '',
+  CHECKOUT_URL: 'https://pay.kiwify.com.br/Vf6sJnV',
   // 2) Google Form para salvar os leads (deixe vazio para não salvar)
   //    action = https://docs.google.com/forms/d/e/<ID>/formResponse
   LEAD_FORM: {
