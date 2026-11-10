@@ -11,6 +11,8 @@
 <link rel="stylesheet" href="styles.css">
 <style>
   .hero-img{display:block;width:100%;max-width:340px;margin:22px auto 0;border-radius:18px;box-shadow:0 24px 60px -18px rgba(232,122,150,.6)}
+  .btn-nao{display:block;width:100%;margin-top:14px;padding:15px 18px;border:1px solid var(--line);border-radius:14px;background:transparent;color:var(--ink);font:600 15px/1.3 'Inter',sans-serif;text-align:center;text-decoration:none}
+  .btn-nao:hover,.btn-nao:focus{border-color:var(--rose)}
   .decline{display:block;text-align:center;margin-top:16px;font-size:14px;color:var(--mute);text-decoration:underline}
   .bar{background:#5a2140;color:var(--ink);text-align:center;font-size:14px;font-weight:600;padding:10px 16px}
   .step-n{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--rose2);color:#2a0d1c;font-weight:700;font-size:14px;flex:none}
@@ -61,7 +63,7 @@
     <div class="price"><b>R$ <span id="preco"></span></b></div>
     <p style="font-size:14px">pagamento único · acesso imediato · Pix ou cartão</p>
     <a id="cta" class="btn pulse mt16" style="text-decoration:none" rel="noopener">SIM, QUERO O GUIA DOS 10 PASSOS →<small>Adicionar ao meu pedido</small></a>
-    <a class="decline" href="resultado.html">Não, obrigada. Quero ver só o meu Mapa do Amor.</a>
+    <a class="btn-nao" href="resultado.html">Não quero, quero prosseguir com meu resultado →</a>
   </div>
 
   <p class="fine">Guia de comportamento e autoestima. Cada relação é única; o guia não garante a volta de ninguém.</p>
