@@ -92,28 +92,27 @@ function render(D){
     <button class="btn" onclick="print()">Salvar meu mapa em PDF</button>
   </div>
 
-  <!-- UPSELL: Como fazer ele voltar -->
+  <!-- UPSELL: Como superar ele -->
   <div class="card mt32 noprint" id="upsell" style="border-color:#c0577a;background:linear-gradient(180deg,#3d1630,#26152d)">
     <div class="center"><span class="tag">🎁 OFERTA ESPECIAL SÓ PARA QUEM FEZ O MAPA</span></div>
-    <h2 class="center mt16">${['termino','duvida'].includes(R.status) ? pn+', e se o seu amor <em>já foi embora?</em>' : pn+', e se ele <em>já passou pela sua vida?</em>'}</h2>
-    <p class="center mt8">Muitas mulheres leem o mapa e reconhecem alguém do passado no perfil. Se você sentiu isso, esta página é para você.</p>
-    <img src="upsell-ele-voltar.jpg" alt="Capa do guia Como fazer ele voltar em 10 passos" style="display:block;width:100%;max-width:300px;margin:20px auto 0;border-radius:16px;box-shadow:0 20px 50px -15px rgba(232,122,150,.55)">
-    <h3 class="center mt24">Como Fazer Ele Voltar <span class="gold">em 10 Passos</span></h3>
-    <p class="center mt8">O guia prático para reconquistar quem você ama com <b class="gold">estratégia, autoestima e as atitudes certas</b>, sem implorar, sem se humilhar e sem repetir os erros que afastaram ele.</p>
+    <h2 class="center mt16">${['termino','duvida'].includes(R.status) ? pn+', e se você não precisasse <em>esperar ele voltar?</em>' : pn+', e se você pudesse <em>soltar o passado de vez?</em>'}</h2>
+    <p class="center mt8">O perfil do seu mapa só encontra espaço quando o amor antigo sai. Se ainda tem alguém ocupando esse lugar, esta página é para você.</p>
+    <img src="capa-superar.jpg" alt="Capa do guia Como Superar Ele em 10 Passos" style="display:block;width:100%;max-width:300px;margin:20px auto 0;border-radius:16px;box-shadow:0 20px 50px -15px rgba(232,122,150,.55)">
+    <h3 class="center mt24">Como Superar Ele <span class="gold">em 10 Passos</span></h3>
+    <p class="center mt8">O guia prático para atravessar o término com <b class="gold">método, autoestima e exercícios que funcionam</b>. Sem esperar mensagem, sem implorar e sem olhar para trás.</p>
     <ul class="list">
       <li>O que fazer (e o que <b>nunca</b> fazer) nos primeiros dias depois do término</li>
-      <li>Como usar o silêncio a seu favor e fazer ele sentir a sua falta</li>
-      <li>A mensagem certa, na hora certa, para reabrir a conversa</li>
-      <li>Como reconstruir sua autoestima para ele reencontrar uma mulher ainda mais forte</li>
-      <li>Como saber se vale a pena ele voltar, ou se é hora de abrir espaço para o perfil do seu mapa</li>
+      <li>Como parar de pensar nele o dia inteiro, com exercícios mentais simples</li>
+      <li>Como reconstruir a sua autoestima e descobrir quem você é sem esse "nós"</li>
+      <li>Como quebrar o padrão que te faz repetir a mesma dor</li>
+      <li><b>Bônus:</b> plano de 30 dias e respostas prontas se ele aparecer</li>
     </ul>
     <div class="price mt24"><b>R$ ${CONFIG.UPSELL_PRECO}</b></div>
     <p class="center" style="font-size:14px">preço exclusivo desta página · acesso imediato</p>
-    <a class="btn pulse mt16 center" style="text-decoration:none" target="_blank" rel="noopener"
-       href="${CONFIG.CHECKOUT_UPSELL || 'https://wa.me/'+CONFIG.WHATSAPP+'?text='+encodeURIComponent('Oi! Fiz o Mapa do Amor e quero o guia Como Fazer Ele Voltar em 10 Passos.')}">
+    <a class="btn pulse mt16 center" style="text-decoration:none" rel="noopener"
+       href="${CONFIG.CHECKOUT_UPSELL || 'https://wa.me/'+CONFIG.WHATSAPP+'?text='+encodeURIComponent('Oi! Fiz o Mapa do Amor e quero o guia Como Superar Ele em 10 Passos.')}">
        SIM, QUERO O GUIA DOS 10 PASSOS →<small>Pix ou cartão · acesso imediato</small></a>
-    <p class="center mt16" style="font-size:13px">Não, obrigada. Prefiro seguir sozinha.</p>
-    <p class="fine" style="margin-top:12px">Guia de comportamento e autoestima. Cada relação é única; o guia não garante a volta de ninguém.</p>
+    <p class="fine" style="margin-top:12px">Guia educativo de autoestima e superação. Não substitui acompanhamento psicológico.</p>
   </div>
   <p class="fine">O Mapa do Amor é um conteúdo de autoconhecimento baseado em numerologia, com fins de reflexão e entretenimento. Não é uma previsão garantida sobre pessoas ou acontecimentos. Dúvidas: <a href="https://wa.me/${CONFIG.WHATSAPP}">WhatsApp</a>.</p>`;
   document.getElementById('mapa').classList.add('on');

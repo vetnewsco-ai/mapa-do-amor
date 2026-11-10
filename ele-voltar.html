@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>Como Fazer Ele Voltar em 10 Passos</title>
-<meta name="description" content="O guia prático para reconquistar quem você ama com estratégia, autoestima e as atitudes certas.">
+<title>Como Superar Ele em 10 Passos</title>
+<meta name="description" content="O guia prático para atravessar o término, recuperar o seu valor e seguir em frente.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
@@ -26,20 +26,21 @@
 
   <div class="center">
     <span class="kicker">🎁 Oferta exclusiva desta página</span>
-    <h1 id="tit">E se o amor da sua vida <em>já passou por ela?</em></h1>
-    <p class="mt16" style="font-size:18px">Muitas mulheres leem o Mapa e reconhecem no perfil <b class="gold">alguém do passado</b>. Se ele foi embora, a história pode não ter acabado.</p>
-    <img class="hero-img" src="upsell-ele-voltar.jpg" alt="Capa do guia Como Fazer Ele Voltar em 10 Passos">
+    <h1 id="tit">E se você não precisasse <em>esperar ele voltar?</em></h1>
+    <p class="mt16" style="font-size:18px">Muitas mulheres leem o Mapa e percebem que ainda estão <b class="gold">presas a alguém do passado</b>. O amor certo só encontra espaço quando o antigo sai.</p>
+    <img class="hero-img" src="capa-superar.jpg" alt="Capa do guia Como Superar Ele em 10 Passos">
   </div>
 
   <div class="card mt24">
-    <h2>Como Fazer Ele Voltar <span class="gold">em 10 Passos</span></h2>
-    <p class="mt8">O guia prático para reconquistar quem você ama com <b class="gold">estratégia, autoestima e as atitudes certas</b>. Sem implorar, sem se humilhar e sem repetir os erros que afastaram ele.</p>
+    <h2>Como Superar Ele <span class="gold">em 10 Passos</span></h2>
+    <p class="mt8">O guia prático para atravessar o término com <b class="gold">método, autoestima e exercícios que funcionam</b>. Sem esperar mensagem, sem implorar e sem olhar para trás.</p>
     <ul class="list">
       <li>O que fazer (e o que <b>nunca</b> fazer) nos primeiros dias depois do término</li>
-      <li>Como usar o silêncio a seu favor e fazer ele sentir a sua falta</li>
-      <li>A mensagem certa, na hora certa, para reabrir a conversa</li>
-      <li>Como reconstruir sua autoestima para ele reencontrar uma mulher ainda mais forte</li>
-      <li>Como saber se vale a pena ele voltar, ou se é hora de abrir espaço para um amor novo</li>
+      <li>Como parar de pensar nele o dia inteiro, com exercícios mentais simples</li>
+      <li>Como tirar ele do pedestal e enxergar a relação como ela realmente era</li>
+      <li>Como reconstruir a sua autoestima e descobrir quem você é sem esse "nós"</li>
+      <li>Como quebrar o padrão que te faz repetir a mesma dor, e abrir espaço para um amor novo</li>
+      <li><b>Bônus:</b> plano de 30 dias, caixa de primeiros socorros emocionais e respostas prontas se ele aparecer</li>
     </ul>
   </div>
 
@@ -52,9 +53,9 @@
     </div>
     <h3 class="mt24">…e vai começar a:</h3>
     <div class="passos">
-      <div><span class="step-n">✓</span><span>agir com calma e estratégia, no seu tempo</span></div>
-      <div><span class="step-n">✓</span><span>recuperar o seu valor, com ou sem ele</span></div>
-      <div><span class="step-n">✓</span><span>tomar a decisão certa para o seu coração</span></div>
+      <div><span class="step-n">✓</span><span>atravessar os dias difíceis com um plano claro</span></div>
+      <div><span class="step-n">✓</span><span>recuperar o seu valor, sem depender dele</span></div>
+      <div><span class="step-n">✓</span><span>abrir espaço para um amor que escolha você</span></div>
     </div>
   </div>
 
@@ -66,20 +67,20 @@
     <a class="btn-nao" href="resultado.html">Não quero, quero prosseguir com meu resultado →</a>
   </div>
 
-  <p class="fine">Guia de comportamento e autoestima. Cada relação é única; o guia não garante a volta de ninguém.</p>
+  <p class="fine">Guia educativo de autoestima e superação. Não substitui acompanhamento psicológico.</p>
 </main>
 <script src="app.js"></script>
 <script>
   document.getElementById('preco').textContent = CONFIG.UPSELL_PRECO;
   document.getElementById('cta').href = CONFIG.CHECKOUT_UPSELL ||
-    'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent('Oi! Fiz o Mapa do Amor e quero o guia Como Fazer Ele Voltar em 10 Passos.');
+    'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent('Oi! Fiz o Mapa do Amor e quero o guia Como Superar Ele em 10 Passos.');
   if (!CONFIG.CHECKOUT_UPSELL) document.getElementById('cta').target = '_blank';
   const D = MA.le('mapa-amor');
   if (D && D.nome) {
     const pn = MA.primeiroNome(D.nome), st = (D.respostas || {}).status;
     document.getElementById('tit').innerHTML = ['termino','duvida'].includes(st)
-      ? pn + ', e se o seu amor <em>já foi embora?</em>'
-      : pn + ', e se o amor da sua vida <em>já passou por ela?</em>';
+      ? pn + ', e se você não precisasse <em>esperar ele voltar?</em>'
+      : pn + ', e se você pudesse <em>soltar o passado de vez?</em>';
   }
 </script>
 </body>
