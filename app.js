@@ -15,7 +15,7 @@ window.CONFIG = {
   WHATSAPP: '5531995618248',
   // Upsell "Como Fazer Ele Voltar em 10 Passos" (página de resultado).
   // Sem link, o botão abre o WhatsApp com uma mensagem pronta.
-  CHECKOUT_UPSELL: '',
+  CHECKOUT_UPSELL: 'https://pay.kiwify.com.br/nGmckGX',
   UPSELL_PRECO: '19,90'
 };
 
