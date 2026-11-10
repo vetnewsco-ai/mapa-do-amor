@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Como Fazer Ele Voltar em 10 Passos</title>
+<meta name="description" content="O guia prático para reconquistar quem você ama com estratégia, autoestima e as atitudes certas.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .hero-img{display:block;width:100%;max-width:340px;margin:22px auto 0;border-radius:18px;box-shadow:0 24px 60px -18px rgba(232,122,150,.6)}
+  .decline{display:block;text-align:center;margin-top:16px;font-size:14px;color:var(--mute);text-decoration:underline}
+  .bar{background:#5a2140;color:var(--ink);text-align:center;font-size:14px;font-weight:600;padding:10px 16px}
+  .step-n{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:50%;background:var(--rose2);color:#2a0d1c;font-weight:700;font-size:14px;flex:none}
+  .passos{display:grid;gap:12px;margin-top:16px}
+  .passos div{display:flex;gap:12px;align-items:flex-start;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="bar">✅ Seu Mapa do Amor foi confirmado. Antes de abrir, veja isto:</div>
+<main class="wrap">
+
+  <div class="center">
+    <span class="kicker">🎁 Oferta exclusiva desta página</span>
+    <h1 id="tit">E se o amor da sua vida <em>já passou por ela?</em></h1>
+    <p class="mt16" style="font-size:18px">Muitas mulheres leem o Mapa e reconhecem no perfil <b class="gold">alguém do passado</b>. Se ele foi embora, a história pode não ter acabado.</p>
+    <img class="hero-img" src="upsell-ele-voltar.jpg" alt="Capa do guia Como Fazer Ele Voltar em 10 Passos">
+  </div>
+
+  <div class="card mt24">
+    <h2>Como Fazer Ele Voltar <span class="gold">em 10 Passos</span></h2>
+    <p class="mt8">O guia prático para reconquistar quem você ama com <b class="gold">estratégia, autoestima e as atitudes certas</b>. Sem implorar, sem se humilhar e sem repetir os erros que afastaram ele.</p>
+    <ul class="list">
+      <li>O que fazer (e o que <b>nunca</b> fazer) nos primeiros dias depois do término</li>
+      <li>Como usar o silêncio a seu favor e fazer ele sentir a sua falta</li>
+      <li>A mensagem certa, na hora certa, para reabrir a conversa</li>
+      <li>Como reconstruir sua autoestima para ele reencontrar uma mulher ainda mais forte</li>
+      <li>Como saber se vale a pena ele voltar, ou se é hora de abrir espaço para um amor novo</li>
+    </ul>
+  </div>
+
+  <div class="card mt16">
+    <h3>Você vai parar de…</h3>
+    <div class="passos">
+      <div><span class="step-n">✕</span><span>mandar mensagem de madrugada e se arrepender no dia seguinte</span></div>
+      <div><span class="step-n">✕</span><span>stalkear o perfil dele esperando um sinal</span></div>
+      <div><span class="step-n">✕</span><span>se perguntar o que fez de errado sem ter resposta</span></div>
+    </div>
+    <h3 class="mt24">…e vai começar a:</h3>
+    <div class="passos">
+      <div><span class="step-n">✓</span><span>agir com calma e estratégia, no seu tempo</span></div>
+      <div><span class="step-n">✓</span><span>recuperar o seu valor, com ou sem ele</span></div>
+      <div><span class="step-n">✓</span><span>tomar a decisão certa para o seu coração</span></div>
+    </div>
+  </div>
+
+  <div class="card mt24 center" style="border-color:#c0577a;background:linear-gradient(180deg,#3d1630,#26152d)">
+    <p><span class="tag">PREÇO EXCLUSIVO PARA QUEM FEZ O MAPA</span></p>
+    <div class="price"><b>R$ <span id="preco"></span></b></div>
+    <p style="font-size:14px">pagamento único · acesso imediato · Pix ou cartão</p>
+    <a id="cta" class="btn pulse mt16" style="text-decoration:none" rel="noopener">SIM, QUERO O GUIA DOS 10 PASSOS →<small>Adicionar ao meu pedido</small></a>
+    <a class="decline" href="resultado.html">Não, obrigada. Quero ver só o meu Mapa do Amor.</a>
+  </div>
+
+  <p class="fine">Guia de comportamento e autoestima. Cada relação é única; o guia não garante a volta de ninguém.</p>
+</main>
+<script src="app.js"></script>
+<script>
+  document.getElementById('preco').textContent = CONFIG.UPSELL_PRECO;
+  document.getElementById('cta').href = CONFIG.CHECKOUT_UPSELL ||
+    'https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent('Oi! Fiz o Mapa do Amor e quero o guia Como Fazer Ele Voltar em 10 Passos.');
+  if (!CONFIG.CHECKOUT_UPSELL) document.getElementById('cta').target = '_blank';
+  const D = MA.le('mapa-amor');
+  if (D && D.nome) {
+    const pn = MA.primeiroNome(D.nome), st = (D.respostas || {}).status;
+    document.getElementById('tit').innerHTML = ['termino','duvida'].includes(st)
+      ? pn + ', e se o seu amor <em>já foi embora?</em>'
+      : pn + ', e se o amor da sua vida <em>já passou por ela?</em>';
+  }
+</script>
+</body>
+</html>

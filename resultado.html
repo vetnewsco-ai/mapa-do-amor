@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Seu Mapa do Amor Completo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<style>@media print{body{background:#fff;color:#222}.card{border-color:#ddd;background:#fff}p,.list li{color:#333}.noprint{display:none}}</style>
+</head>
+<body>
+<main class="wrap">
+
+<section id="pedir" class="step">
+  <span class="kicker">✦ Mapa do Amor Completo</span>
+  <h2>Pagamento confirmado. <em>Vamos abrir seu mapa.</em></h2>
+  <p class="mt8">Digite os mesmos dados que você usou no quiz.</p>
+  <form id="f">
+    <label for="nome">Nome completo de nascimento</label><input id="nome" required>
+    <label for="nasc">Data de nascimento</label><input id="nasc" type="date" required>
+    <button class="btn mt16">Abrir meu Mapa Completo →</button>
+  </form>
+</section>
+
+<section id="mapa" class="step"></section>
+
+</main>
+<script src="manifesto.js"></script>
+<script src="app.js"></script>
+<script>
+function render(D){
+  const M=MA.calcula(D.nome,D.nasc), P=M.perfil, R=D.respostas||{};
+  const pad=MA.PADROES[R.padrao]||MA.PADROES.some;
+  const pn=MA.primeiroNome(D.nome);
+  const jan = M.janelas.length ? M.janelas.map(j=>`<span class="chip">${MA.mesNome(j.dt)}${j.mesP===6?' ♥':''}</span>`).join('')
+            : '<p>Seu ciclo atual é de preparação: use os próximos meses para fechar feridas antigas.</p>';
+  document.getElementById('mapa').innerHTML=`
+  <div class="center">
+    <span class="kicker">✦ Mapa do Amor Completo</span>
+    <h1>${pn}, este é o <em>seu</em> mapa.</h1>
+    <p class="mt8">Número do coração <b class="gold">${M.amor}</b> · Expressão ${M.expressao} · Destino ${M.destino} · Ano pessoal ${M.anoPessoal}</p>
+  </div>
+
+  <div class="card mt24 center">
+    <p class="tag">Retrato ilustrativo do seu par compatível</p>
+    <div class="mt16">${MA.imagemPerfil(D.nasc,M.amor)}</div>
+    <h2 class="mt16">${P.titulo}</h2>
+    <p class="mt8">${P.essencia}</p>
+  </div>
+
+  <div class="card mt16">
+    <h3>Como ele é</h3>
+    <ul class="list">${P.traços.map(t=>`<li>${t}</li>`).join('')}</ul>
+  </div>
+
+  <div class="card mt16"><h3>Como ele ama</h3><p class="mt8">${P.ama}</p></div>
+
+  <div class="card mt16"><h3>Como reconhecer quando ele aparecer</h3><p class="mt8">${P.reconhecer}</p></div>
+
+  <div class="card mt16 center">
+    <h3>Suas letras de afinidade</h3>
+    <div class="big-letter mt16" style="font-size:64px">${M.letrasAfinidade.join(' · ')}</div>
+    <p class="mt8">Na numerologia, estas letras vibram no número ${M.amor}, o mesmo do seu coração. Nomes que começam com elas tendem a carregar uma energia que conversa com a sua.</p>
+  </div>
+
+  <div class="card mt16">
+    <h3>Seus meses mais favoráveis para o amor</h3>
+    <p class="mt8">Meses em que seu ciclo pessoal entra nas vibrações 2 (encontro) e 6 (amor e compromisso ♥). São janelas para se abrir, sair, aceitar convites e conversar sobre o futuro.</p>
+    <div class="mt16">${jan}</div>
+  </div>
+
+  <div class="card mt16">
+    <p class="tag">Seu padrão</p>
+    <h3 class="mt8">${pad.nome}</h3>
+    <p class="mt8">${pad.txt}</p>
+    <p class="mt8">${MA.ENTREGA[R.entrega]||''}</p>
+  </div>
+
+  <div class="card mt16" style="border-color:#8a5a6e">
+    <h3>⚠️ O alerta do seu mapa</h3>
+    <p class="mt8">${P.cuidado}</p>
+  </div>
+
+  <div class="card mt16">
+    <h3>Se ele já está do seu lado…</h3>
+    <p class="mt8">Compare o homem que está com você com o perfil acima. Não pela aparência — pelas atitudes. Se ele age como o <b>${P.titulo}</b>, você tem um sinal forte. Se ele repete <b>${pad.nome.toLowerCase()}</b>, seu mapa está te pedindo atenção.</p>
+  </div>
+
+  <div class="center mt24 noprint">
+    <button class="btn" onclick="print()">Salvar meu mapa em PDF</button>
+  </div>
+
+  <!-- UPSELL: Como fazer ele voltar -->
+  <div class="card mt32 noprint" id="upsell" style="border-color:#c0577a;background:linear-gradient(180deg,#3d1630,#26152d)">
+    <div class="center"><span class="tag">🎁 OFERTA ESPECIAL SÓ PARA QUEM FEZ O MAPA</span></div>
+    <h2 class="center mt16">${['termino','duvida'].includes(R.status) ? pn+', e se o seu amor <em>já foi embora?</em>' : pn+', e se ele <em>já passou pela sua vida?</em>'}</h2>
+    <p class="center mt8">Muitas mulheres leem o mapa e reconhecem alguém do passado no perfil. Se você sentiu isso, esta página é para você.</p>
+    <img src="upsell-ele-voltar.jpg" alt="Capa do guia Como fazer ele voltar em 10 passos" style="display:block;width:100%;max-width:300px;margin:20px auto 0;border-radius:16px;box-shadow:0 20px 50px -15px rgba(232,122,150,.55)">
+    <h3 class="center mt24">Como Fazer Ele Voltar <span class="gold">em 10 Passos</span></h3>
+    <p class="center mt8">O guia prático para reconquistar quem você ama com <b class="gold">estratégia, autoestima e as atitudes certas</b>, sem implorar, sem se humilhar e sem repetir os erros que afastaram ele.</p>
+    <ul class="list">
+      <li>O que fazer (e o que <b>nunca</b> fazer) nos primeiros dias depois do término</li>
+      <li>Como usar o silêncio a seu favor e fazer ele sentir a sua falta</li>
+      <li>A mensagem certa, na hora certa, para reabrir a conversa</li>
+      <li>Como reconstruir sua autoestima para ele reencontrar uma mulher ainda mais forte</li>
+      <li>Como saber se vale a pena ele voltar, ou se é hora de abrir espaço para o perfil do seu mapa</li>
+    </ul>
+    <div class="price mt24"><b>R$ ${CONFIG.UPSELL_PRECO}</b></div>
+    <p class="center" style="font-size:14px">preço exclusivo desta página · acesso imediato</p>
+    <a class="btn pulse mt16 center" style="text-decoration:none" target="_blank" rel="noopener"
+       href="${CONFIG.CHECKOUT_UPSELL || 'https://wa.me/'+CONFIG.WHATSAPP+'?text='+encodeURIComponent('Oi! Fiz o Mapa do Amor e quero o guia Como Fazer Ele Voltar em 10 Passos.')}">
+       SIM, QUERO O GUIA DOS 10 PASSOS →<small>Pix ou cartão · acesso imediato</small></a>
+    <p class="center mt16" style="font-size:13px">Não, obrigada. Prefiro seguir sozinha.</p>
+    <p class="fine" style="margin-top:12px">Guia de comportamento e autoestima. Cada relação é única; o guia não garante a volta de ninguém.</p>
+  </div>
+  <p class="fine">O Mapa do Amor é um conteúdo de autoconhecimento baseado em numerologia, com fins de reflexão e entretenimento. Não é uma previsão garantida sobre pessoas ou acontecimentos. Dúvidas: <a href="https://wa.me/${CONFIG.WHATSAPP}">WhatsApp</a>.</p>`;
+  document.getElementById('mapa').classList.add('on');
+  document.getElementById('pedir').classList.remove('on');
+}
+const D=MA.le('mapa-amor');
+if(D&&D.nome&&D.nasc) render(D); else document.getElementById('pedir').classList.add('on');
+document.getElementById('f').onsubmit=e=>{e.preventDefault();
+  const d={nome:document.getElementById('nome').value.trim(),nasc:document.getElementById('nasc').value,respostas:{}};
+  if(!d.nome||!d.nasc) return; MA.guarda('mapa-amor',d); render(d);};
+</script>
+</body>
+</html>

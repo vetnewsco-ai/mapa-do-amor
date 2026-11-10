@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mapa do Amor — Descubra o perfil do amor da sua vida</title>
+<meta name="description" content="Seu nome e sua data de nascimento revelam por que o amor tem doído do mesmo jeito — e o perfil do homem que realmente combina com você.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="wrap">
+
+<!-- 0. ENTRADA -->
+<section class="step on center" id="s-inicio">
+  <span class="kicker">✦ Mapa do Amor · Numerologia</span>
+  <h1>Você não escolheu errado tantas vezes <em>por acaso.</em></h1>
+  <p class="mt16" style="font-size:18px">Existe um padrão escondido no seu <b class="gold">nome completo</b> e na sua <b class="gold">data de nascimento</b> que explica por que o amor tem doído sempre do mesmo jeito — e revela o <b class="gold">perfil do homem que realmente combina com você.</b></p>
+  <div class="card mt24" style="text-align:left">
+    <p style="color:var(--ink)">Em 2 minutos você descobre:</p>
+    <ul class="list">
+      <li>O padrão que te prende em decepções</li>
+      <li>A letra de afinidade do seu par compatível</li>
+      <li>Como ele é, como ama e como reconhecê-lo</li>
+      <li>Os meses mais favoráveis para o amor nos próximos 12 meses</li>
+    </ul>
+  </div>
+  <button class="btn pulse mt24" data-go="next">Quero descobrir agora →<small>Grátis para começar · 7 perguntas rápidas</small></button>
+  <p class="fine">Se ele já está do seu lado, se ainda vai chegar ou se você precisa parar de esperar por quem não vem — o seu mapa mostra o caminho.</p>
+</section>
+
+<!-- 1..7. PERGUNTAS (geradas) -->
+<div id="perguntas"></div>
+
+<!-- 8. DADOS -->
+<section class="step" id="s-dados">
+  <div class="progress"><i style="width:90%"></i></div>
+  <span class="kicker">Última etapa</span>
+  <h2>Agora, o que torna o seu mapa <em>único</em></h2>
+  <p class="mt8">A numerologia usa cada letra do seu nome de registro e a sua data de nascimento. Digite exatamente como está no seu documento.</p>
+  <form id="f-dados" novalidate>
+    <label for="nome">Nome completo de nascimento</label>
+    <input id="nome" autocomplete="name" placeholder="Ex.: Maria Fernanda Souza Lima" required>
+    <label for="nasc">Data de nascimento</label>
+    <input id="nasc" type="date" required min="1930-01-01" max="2010-12-31">
+    <label for="email">Seu melhor e-mail</label>
+    <input id="email" type="email" autocomplete="email" placeholder="voce@email.com" required>
+    <div class="err" id="err-dados"></div>
+    <button class="btn mt16" type="submit">Calcular meu Mapa do Amor →</button>
+  </form>
+  <p class="fine">🔒 Seus dados são usados só para gerar e enviar o seu mapa. Nada de spam.</p>
+</section>
+
+<!-- 9. CALCULANDO -->
+<section class="step center" id="s-calc">
+  <div class="loader"></div>
+  <h2 id="calc-tit">Lendo seu nome…</h2>
+  <p class="loadmsg mt8" id="calc-msg"></p>
+</section>
+
+<!-- 10. PRÉVIA + OFERTA -->
+<section class="step" id="s-previa">
+  <div class="center">
+    <span class="kicker">✦ Seu mapa está pronto</span>
+    <h2><span id="pv-nome"></span>, isso explica <em>muita coisa.</em></h2>
+  </div>
+
+  <div class="card mt24">
+    <p class="tag">Seu padrão amoroso</p>
+    <h3 class="mt8" id="pv-padrao"></h3>
+    <p class="mt8" id="pv-padrao-txt"></p>
+  </div>
+
+  <div class="card mt16 center">
+    <p class="tag">A letra de afinidade do seu par</p>
+    <div class="big-letter mt16" id="pv-letra"></div>
+    <p class="mt8">Nomes iniciados com esta letra vibram no mesmo número do seu coração: <b class="gold" id="pv-num"></b>.</p>
+  </div>
+
+  <div class="card mt16">
+    <p class="tag">O homem que combina com você</p>
+    <h3 class="mt8" id="pv-perfil"></h3>
+    <p class="mt8" id="pv-ess"></p>
+    <div class="locked mt16">
+      <div class="blur" id="pv-bloq"></div>
+      <div class="veil">🔒 Conteúdo exclusivo do Mapa Completo</div>
+    </div>
+  </div>
+
+  <div class="card mt16">
+    <div class="row" style="align-items:center">
+      <div class="locked" style="max-width:140px"><div class="blur" id="pv-retrato"></div><div class="veil" style="font-size:13px">🔒 Retrato</div></div>
+      <div>
+        <p style="color:var(--ink)"><b>No Mapa Completo você vê:</b></p>
+        <p class="mt8" style="font-size:14px">o retrato ilustrativo do perfil dele, como ele ama, onde ele costuma surgir e <b class="gold">em quais meses</b> a energia do amor está mais forte para você.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- OFERTA -->
+  <div class="card mt24 center" style="border-color:#8a5a6e" id="oferta">
+    <h2>Pare de adivinhar. <em>Saiba.</em></h2>
+    <p class="mt8">Você já perdeu meses — talvez anos — com quem não era pra você. Por menos que um café, você descobre quem é.</p>
+    <ul class="list" style="text-align:left">
+      <li><b>Retrato ilustrativo</b> do seu par compatível</li>
+      <li><b>Descrição completa</b>: personalidade, jeito, como ele ama</li>
+      <li><b>Como reconhecer</b> quando ele aparecer (e onde costuma surgir)</li>
+      <li><b>Seus meses favoráveis</b> para o amor nos próximos 12 meses</li>
+      <li>O <b>alerta</b> para não cair no mesmo padrão de novo</li>
+      <li>Todas as <b>letras de afinidade</b> e o significado do seu número</li>
+    </ul>
+    <p class="mt24"><span class="tag">PREÇO DE LANÇAMENTO</span></p>
+    <div class="price"><s>R$ <span class="preco-cheio"></span></s><b>R$ <span class="preco"></span></b></div>
+    <p style="font-size:14px">pagamento único · acesso imediato · Pix ou cartão</p>
+    <button class="btn pulse mt16" data-go="checkout">QUERO VER MEU MAPA COMPLETO →<small>Liberado na hora, direto no seu e-mail</small></button>
+    <div class="trust"><span>🔒 Compra segura Kiwify</span><span>⚡ Acesso imediato</span><span>💌 Enviado por e-mail</span></div>
+  </div>
+
+  <div class="card mt16">
+    <h3>Para quem é o Mapa do Amor</h3>
+    <ul class="list">
+      <li>Para quem já se decepcionou e não quer repetir a história</li>
+      <li>Para quem está com alguém e quer saber se ele tem o perfil que combina</li>
+      <li>Para quem cansou de esperar e quer entender o próprio coração</li>
+    </ul>
+  </div>
+
+  <button class="btn mt24" data-go="checkout">Desbloquear meu mapa por R$ <span class="preco"></span></button>
+  <p class="fine">O Mapa do Amor é um conteúdo de autoconhecimento baseado em numerologia, com fins de reflexão e entretenimento. Não é uma previsão garantida sobre pessoas ou acontecimentos.</p>
+</section>
+
+<!-- 11. CONFIRMAÇÃO ANTES DO PAGAMENTO -->
+<section class="step" id="s-checkout">
+  <div class="progress"><i style="width:97%"></i></div>
+  <span class="kicker">Falta só 1 passo</span>
+  <h2>Para onde enviamos o seu <em>Mapa Completo?</em></h2>
+  <p class="mt8">Confirme seus dados para receber o acesso assim que o pagamento for aprovado.</p>
+  <form id="f-check" novalidate>
+    <label for="email2">Confirme seu e-mail</label>
+    <input id="email2" type="email" autocomplete="email" required>
+    <label for="tel">WhatsApp (com DDD)</label>
+    <input id="tel" type="tel" autocomplete="tel" inputmode="tel" placeholder="(11) 91234-5678" required>
+    <div class="err" id="err-check"></div>
+    <div class="price mt16"><s>R$ <span class="preco-cheio"></span></s><b>R$ <span class="preco"></span></b></div>
+    <button class="btn pulse mt16" type="submit">IR PARA O PAGAMENTO SEGURO →<small>Pix ou cartão · acesso imediato</small></button>
+  </form>
+  <div class="trust"><span>🔒 Ambiente seguro</span><span>💳 Kiwify</span></div>
+  <p class="fine">Conteúdo de autoconhecimento e entretenimento baseado em numerologia.</p>
+</section>
+
+</main>
+<script src="manifesto.js"></script>
+<script src="app.js"></script>
+<script>
+const PERGUNTAS = [
+ {q:'Como está o seu coração hoje?', o:[['Saindo de uma decepção recente','recente'],['Ainda dói algo que aconteceu há tempos','antiga'],['Cansada de tentar e me decepcionar','cansada'],['Pronta pra amar, mas com medo','medo']]},
+ {q:'Quantas vezes você sentiu que deu muito mais do que recebeu?', o:[['Uma vez, e foi o suficiente','1'],['Algumas vezes','2'],['Quase sempre','3'],['Em todas as minhas relações','4']]},
+ {q:'Os homens que se aproximam de você costumam ser…', k:'padrao', o:[['Fechados, difíceis de alcançar','indisponivel'],['Encantadores no começo… e depois somem','some'],['Ciumentos e controladores','controle'],['Acomodados — eu que carrego tudo','acomodado']]},
+ {q:'O que mais te machucou no amor?', o:[['Traição','traicao'],['Ser abandonada','abandono'],['Desinteresse e frieza','frieza'],['Mentiras','mentira']]},
+ {q:'Quando você gosta de alguém, você…', k:'entrega', o:[['Se entrega rápido e por inteiro','rapido'],['Testa antes de confiar','testa'],['Se anula pra relação dar certo','anula'],['Foge quando começa a se apegar','foge']]},
+ {q:'Hoje, você está…', k:'status', o:[['Solteira','solteira'],['Conhecendo alguém','conhecendo'],['Num relacionamento, mas com dúvidas','duvida'],['Saindo de um término','termino']]},
+ {q:'O que você mais quer sentir num amor?', k:'desejo', o:[['Segurança','seguranca'],['Ser prioridade de verdade','prioridade'],['Paz','paz'],['Paixão que não acaba','paixao']]}
+];
+const R = {};
+const steps = [];
+const box = document.getElementById('perguntas');
+PERGUNTAS.forEach((p,i)=>{
+  const s=document.createElement('section'); s.className='step'; s.id='s-q'+i;
+  s.innerHTML=`<div class="progress"><i style="width:${Math.round((i+1)/(PERGUNTAS.length+1)*90)}%"></i></div>
+   <span class="kicker">Pergunta ${i+1} de ${PERGUNTAS.length}</span><h2>${p.q}</h2>
+   <div class="opts">${p.o.map(o=>`<button class="opt" data-v="${o[1]}">${o[0]}</button>`).join('')}</div>`;
+  s.querySelectorAll('.opt').forEach(b=>b.onclick=()=>{
+    s.querySelectorAll('.opt').forEach(x=>x.classList.remove('sel')); b.classList.add('sel');
+    R[p.k||('q'+i)]=b.dataset.v; setTimeout(()=>go(cur+1),260);
+  });
+  box.appendChild(s);
+});
+['s-inicio',...PERGUNTAS.map((_,i)=>'s-q'+i),'s-dados','s-calc','s-previa','s-checkout'].forEach(id=>steps.push(document.getElementById(id)));
+let cur=0;
+function go(n){ steps[cur].classList.remove('on'); cur=n; steps[cur].classList.add('on'); window.scrollTo({top:0,behavior:'smooth'}); }
+function goId(id){ go(steps.findIndex(s=>s.id===id)); }
+document.querySelectorAll('[data-go="next"]').forEach(b=>b.onclick=()=>go(cur+1));
+document.querySelectorAll('[data-go="checkout"]').forEach(b=>b.onclick=()=>{ document.getElementById('email2').value=''; goId('s-checkout'); });
+document.querySelectorAll('.preco').forEach(e=>e.textContent=CONFIG.PRECO);
+document.querySelectorAll('.preco-cheio').forEach(e=>e.textContent=CONFIG.PRECO_CHEIO);
+
+const emailOk = e=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);
+let D=null, M=null;
+
+document.getElementById('f-dados').onsubmit=e=>{
+  e.preventDefault();
+  const nome=document.getElementById('nome').value.trim().replace(/\s+/g,' ');
+  const nasc=document.getElementById('nasc').value;
+  const email=document.getElementById('email').value.trim().toLowerCase();
+  const err=document.getElementById('err-dados');
+  if(nome.split(' ').length<2) return err.textContent='Digite seu nome completo (nome e sobrenome).';
+  if(!nasc) return err.textContent='Informe sua data de nascimento.';
+  if(!emailOk(email)) return err.textContent='Confira o seu e-mail.';
+  err.textContent='';
+  D={nome,nasc,email,respostas:R}; M=MA.calcula(nome,nasc);
+  MA.guarda('mapa-amor',D);
+  MA.salvaLead({etapa:'quiz',nome,nascimento:nasc,email,padrao:R.padrao||''});
+  calcular();
+};
+
+function calcular(){
+  goId('s-calc');
+  const pn=MA.primeiroNome(D.nome);
+  const fases=[['Lendo seu nome…',`Convertendo as letras de ${pn} em números…`],
+    ['Cruzando com sua data…','Calculando seu número de destino…'],
+    ['Encontrando seu padrão…','Analisando suas respostas sobre as decepções…'],
+    ['Revelando seu par compatível…','Quase pronto…']];
+  let i=0; const t=document.getElementById('calc-tit'), m=document.getElementById('calc-msg');
+  const tick=()=>{ if(i<fases.length){ t.textContent=fases[i][0]; m.textContent=fases[i][1]; i++; setTimeout(tick,1100);} else mostraPrevia(); };
+  tick();
+}
+
+function mostraPrevia(){
+  const P=M.perfil, pad=MA.PADROES[R.padrao]||MA.PADROES.some;
+  document.getElementById('pv-nome').textContent=MA.primeiroNome(D.nome);
+  document.getElementById('pv-padrao').textContent=pad.nome;
+  document.getElementById('pv-padrao-txt').textContent=pad.txt;
+  document.getElementById('pv-letra').textContent=M.letrasAfinidade[0];
+  document.getElementById('pv-num').textContent=M.amor;
+  document.getElementById('pv-perfil').textContent=P.titulo;
+  document.getElementById('pv-ess').textContent=P.essencia.split('. ')[0]+'…';
+  document.getElementById('pv-bloq').innerHTML='<p>'+P.ama+'</p><p class="mt8">'+P.reconhecer+'</p><p class="mt8">Seus meses favoráveis: ███████, ████████ e ██████.</p>';
+  document.getElementById('pv-retrato').innerHTML=MA.imagemPerfil(D.nasc,M.amor);
+  goId('s-previa');
+}
+
+document.getElementById('f-check').onsubmit=e=>{
+  e.preventDefault();
+  const e2=document.getElementById('email2').value.trim().toLowerCase();
+  const tel=document.getElementById('tel').value.replace(/\D/g,'');
+  const err=document.getElementById('err-check');
+  if(e2!==D.email) return err.textContent='Os e-mails não conferem. Digite o mesmo e-mail da etapa anterior: '+D.email.replace(/(.{2}).*(@.*)/,'$1•••$2');
+  if(tel.length<10||tel.length>11) return err.textContent='Digite seu WhatsApp com DDD.';
+  err.textContent='';
+  D.telefone=tel; MA.guarda('mapa-amor',D);
+  MA.salvaLead({etapa:'checkout',nome:D.nome,nascimento:D.nasc,email:D.email,telefone:tel,padrao:R.padrao||''});
+  if(!CONFIG.CHECKOUT_URL){ alert('Checkout ainda não configurado (CONFIG.CHECKOUT_URL em app.js). Abrindo o resultado para teste.'); location.href='resultado.html'; return; }
+  setTimeout(()=>location.href=CONFIG.CHECKOUT_URL,400);
+};
+</script>
+</body>
+</html>
